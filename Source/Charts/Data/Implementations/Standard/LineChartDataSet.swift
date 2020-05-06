@@ -116,7 +116,7 @@ open class LineChartDataSet: LineRadarChartDataSet, ILineChartDataSet
     open var isDrawCirclesEnabled: Bool { return drawCirclesEnabled }
     
     /// If true, gradient lines are drawn instead of solid
-    public var drawGradientEnabled = true
+    public var drawGradientEnabled = false
 
     /// - returns: true if drawing gradeint lines is enabled, false if not.
     public var isDrawGradientEnabled: Bool { return drawGradientEnabled }

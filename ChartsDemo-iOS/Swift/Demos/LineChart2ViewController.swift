@@ -45,7 +45,7 @@ class LineChart2ViewController: DemoBaseViewController {
         chartView.dragEnabled = true
         chartView.setScaleEnabled(true)
         chartView.pinchZoomEnabled = true
-        
+        chartView.clipDataToContentEnabled = true
         let l = chartView.legend
         l.form = .line
         l.font = UIFont(name: "HelveticaNeue-Light", size: 11)!
@@ -53,7 +53,7 @@ class LineChart2ViewController: DemoBaseViewController {
         l.horizontalAlignment = .left
         l.verticalAlignment = .bottom
         l.orientation = .horizontal
-        l.drawInside = false
+        l.drawInside = true
         
         let xAxis = chartView.xAxis
         xAxis.labelFont = .systemFont(ofSize: 11)
@@ -62,19 +62,19 @@ class LineChart2ViewController: DemoBaseViewController {
         
         let leftAxis = chartView.leftAxis
         leftAxis.labelTextColor = UIColor(red: 51/255, green: 181/255, blue: 229/255, alpha: 1)
-        leftAxis.axisMaximum = 200
+        leftAxis.axisMaximum = 100
         leftAxis.axisMinimum = 0
         leftAxis.drawGridLinesEnabled = true
         leftAxis.granularityEnabled = true
         
         let rightAxis = chartView.rightAxis
         rightAxis.labelTextColor = .red
-        rightAxis.axisMaximum = 900
-        rightAxis.axisMinimum = -200
+        rightAxis.axisMaximum = 100
+        rightAxis.axisMinimum = 0
         rightAxis.granularityEnabled = false
         
-        sliderX.value = 20
-        sliderY.value = 30
+        sliderX.value = 0
+        sliderY.value = 0
         slidersValueChanged(nil)
         
         chartView.animate(xAxisDuration: 2.5)

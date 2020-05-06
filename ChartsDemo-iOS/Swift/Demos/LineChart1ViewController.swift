@@ -70,12 +70,8 @@ class LineChart1ViewController: DemoBaseViewController {
         ll2.valueFont = .systemFont(ofSize: 10)
         
         let leftAxis = chartView.leftAxis
-        leftAxis.removeAllLimitLines()
-        leftAxis.addLimitLine(ll1)
-        leftAxis.addLimitLine(ll2)
         leftAxis.axisMaximum = 200
         leftAxis.axisMinimum = -50
-        leftAxis.gridLineDashLengths = [5, 5]
         leftAxis.drawLimitLinesBehindDataEnabled = true
         
         chartView.rightAxis.enabled = false
@@ -128,8 +124,9 @@ class LineChart1ViewController: DemoBaseViewController {
         set1.valueFont = .systemFont(ofSize: 9)
         set1.formLineDashLengths = [5, 2.5]
         set1.formLineWidth = 1
-        set1.formSize = 15
-        
+        set1.formSize = 0
+        chartView.clipValuesToContentEnabled = false
+        chartView.clipDataToContentEnabled = false
         let gradientColors = [ChartColorTemplates.colorFromString("#00ff0000").cgColor,
                               ChartColorTemplates.colorFromString("#ffff0000").cgColor]
         let gradient = CGGradient(colorsSpace: nil, colors: gradientColors as CFArray, locations: nil)!
