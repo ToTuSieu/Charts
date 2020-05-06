@@ -433,8 +433,8 @@ open class LineChartRenderer: LineRadarRenderer
         context.drawPath(using: .fill)
 
         let boundingBox = gradientPath.boundingBox
-        let gradientStart = CGPoint(x: 0, y: boundingBox.maxY)
-        let gradientEnd = CGPoint(x: 0, y: boundingBox.minY)
+        let gradientStart = CGPoint(x: boundingBox.maxX, y: 0)
+        let gradientEnd = CGPoint(x: boundingBox.minX, y: 0)
         var gradientLocations = [CGFloat]()
         var gradientColors = [CGFloat]()
         var cRed: CGFloat = 0
@@ -458,15 +458,15 @@ open class LineChartRenderer: LineRadarRenderer
 
         for position in gradientPositions
         {
-            let positionLocation = CGPoint(x: 0, y: position)
+            let positionLocation = CGPoint(x: position, y: 0)
                 .applying(matrix)
-            let normPositionLocation = (positionLocation.y - gradientStart.y) / (gradientEnd.y - gradientStart.y)
+            let normPositionLocation = (positionLocation.x - gradientStart.x) / (gradientEnd.x - gradientStart.x)
             if (normPositionLocation < 0) {
                 gradientLocations.append(0)
             } else if (normPositionLocation > 1) {
                 gradientLocations.append(1)
             } else {
-                gradientLocations.append(normPositionLocation)
+                gradientLocations.append(1)
             }
         }
 
@@ -480,7 +480,7 @@ open class LineChartRenderer: LineRadarRenderer
         }
 
         //Set upper bound color
-        gradientLocations.append(1)
+        gradientLocations.append(0)
         cColor = dataSet.color(atIndex: dataSet.colors.count - 1)
         if cColor.getRed(&cRed, green: &cGreen, blue: &cBlue, alpha: &cAlpha)
         {

@@ -102,7 +102,9 @@ class CubicLineChartViewController: DemoBaseViewController {
         set1.fillAlpha = 1
         set1.drawHorizontalHighlightIndicatorEnabled = false
         set1.fillFormatter = CubicLineSampleFillFormatter()
-        
+        set1.setColors(.yellow, .red)
+        set1.gradientPositions = [0, 3]
+        set1.drawGradientEnabled = true
         let data = LineChartData(dataSet: set1)
         data.setValueFont(UIFont(name: "HelveticaNeue-Light", size: 9)!)
         data.setDrawValues(false)
