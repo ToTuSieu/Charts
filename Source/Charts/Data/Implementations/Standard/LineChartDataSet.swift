@@ -115,6 +115,12 @@ open class LineChartDataSet: LineRadarChartDataSet, ILineChartDataSet
     /// `true` if drawing circles for this DataSet is enabled, `false` ifnot
     open var isDrawCirclesEnabled: Bool { return drawCirclesEnabled }
     
+    /// If true, gradient lines are drawn instead of solid
+    public var drawGradientEnabled = false
+
+    /// - returns: true if drawing gradeint lines is enabled, false if not.
+    public var isDrawGradientEnabled: Bool { return drawGradientEnabled }
+    
     /// The color of the inner circle (the circle-hole).
     open var circleHoleColor: NSUIColor? = NSUIColor.white
     
@@ -126,6 +132,9 @@ open class LineChartDataSet: LineRadarChartDataSet, ILineChartDataSet
     
     /// This is how much (in pixels) into the dash pattern are we starting from.
     open var lineDashPhase = CGFloat(0.0)
+    
+    /// This is the points where gradient should change color
+    public var gradientPositions: [CGFloat]?
     
     /// This is the actual dash pattern.
     /// I.e. [2, 3] will paint [--   --   ]
@@ -166,6 +175,7 @@ open class LineChartDataSet: LineRadarChartDataSet, ILineChartDataSet
         copy.lineCapType = lineCapType
         copy.drawCirclesEnabled = drawCirclesEnabled
         copy.drawCircleHoleEnabled = drawCircleHoleEnabled
+        copy.drawGradientEnabled = drawGradientEnabled
         copy.mode = mode
         copy._fillFormatter = _fillFormatter
         return copy

@@ -55,6 +55,14 @@ public protocol ILineChartDataSet: ILineRadarChartDataSet
     /// `true` if drawing circles for this DataSet is enabled, `false` ifnot
     var isDrawCirclesEnabled: Bool { get }
     
+    /// If true, gradient lines are drawn instead of solid
+    var drawGradientEnabled: Bool { get set }
+
+    /// - returns: true if drawing gradeint lines is enabled, false if not.
+    var isDrawGradientEnabled: Bool { get }
+    
+    var gradientPositions: [CGFloat]? { get set }
+    
     /// The color of the inner circle (the circle-hole).
     var circleHoleColor: NSUIColor? { get set }
     
